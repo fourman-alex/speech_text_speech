@@ -21,9 +21,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final buttonStyle = OutlinedButton.styleFrom(
-      minimumSize: const Size(100, 50),
-    );
     return Scaffold(
       body: SafeArea(
         child: Padding(

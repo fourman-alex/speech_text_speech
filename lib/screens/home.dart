@@ -21,6 +21,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final buttonStyle = OutlinedButton.styleFrom(
+      minimumSize: const Size(100, 50),
+    );
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -35,19 +38,22 @@ class _HomeState extends State<Home> {
                   SpeakButton(
                     textNotifier: _textNotifier,
                   ),
-                  OutlinedButton(
+                  OutlinedButton.icon(
+                    icon: Icon(Icons.hearing),
                     onPressed: () {
                       _tts.speak(_textNotifier.value);
                     },
-                    child: Text('Listen'),
+                    label: Text('Listen'),
                   )
                 ],
               ),
+              const SizedBox(height: 16),
               Expanded(
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    border: Border.all(),
-                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                        color: Theme.of(context).colorScheme.background),
+                    borderRadius: BorderRadius.circular(4),
                   ),
                   child: Align(
                     alignment: Alignment.topLeft,

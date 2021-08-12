@@ -31,9 +31,10 @@ class Stt {
         if (!res) {
           onError(Exception('Could not initialize speech to text service'));
           onStatus(SttStatus.error);
+        } else {
+          _sttDidInit = true;
+          onStatus(SttStatus.done);
         }
-        _sttDidInit = true;
-        onStatus(SttStatus.done);
       } on Exception catch (e) {
         onError(e);
         onStatus(SttStatus.error);

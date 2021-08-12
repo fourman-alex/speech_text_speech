@@ -9,7 +9,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String _transcribedText = '';
   ValueNotifier<String> _textNotifier = ValueNotifier('');
   @override
   Widget build(BuildContext context) {
@@ -39,7 +38,19 @@ class _HomeState extends State<Home> {
                     border: Border.all(),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Text(_transcribedText),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ValueListenableBuilder<String>(
+                        valueListenable: _textNotifier,
+                        builder: (context, value, _) => Text(
+                          value,
+                          style: Theme.of(context).textTheme.headline3,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               )
             ],

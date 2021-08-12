@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:speech_text_speech/widgets/listen_button.dart';
 
 class Home extends StatefulWidget {
@@ -10,6 +11,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   ValueNotifier<String> _textNotifier = ValueNotifier('');
+  late final _tts;
+
+  @override
+  void initState() {
+    super.initState();
+    _tts = FlutterTts();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +36,9 @@ class _HomeState extends State<Home> {
                     textNotifier: _textNotifier,
                   ),
                   OutlinedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _tts.speak(_textNotifier.value);
+                    },
                     child: Text('Listen'),
                   )
                 ],

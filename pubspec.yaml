@@ -24,6 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   speech_to_text: ^5.0.0
+  flutter_tts: ^3.2.2
 
 dev_dependencies:
   flutter_test:

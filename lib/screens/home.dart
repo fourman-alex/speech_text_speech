@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:speech_text_speech/widgets/listen_button.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   String _transcribedText = '';
+  ValueNotifier<String> _textNotifier = ValueNotifier('');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,13 +24,8 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  OutlinedButton.icon(
-                    icon: Icon(
-                      Icons.mic_none_outlined,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    label: Text('Speak'),
-                    onPressed: () {},
+                  ListenButton(
+                    textNotifier: _textNotifier,
                   ),
                   OutlinedButton(
                     onPressed: () {},

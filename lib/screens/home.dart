@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:speech_text_speech/widgets/listen_button.dart';
+import 'package:speech_text_speech/widgets/speak_button.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ListenButton(
+                  SpeakButton(
                     textNotifier: _textNotifier,
                   ),
                   OutlinedButton(

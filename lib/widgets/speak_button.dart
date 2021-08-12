@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:speech_text_speech/state/stt.dart';
 import 'package:speech_to_text/speech_to_text.dart';
 
-class ListenButton extends StatefulWidget {
-  const ListenButton({Key? key, required this.textNotifier}) : super(key: key);
+class SpeakButton extends StatefulWidget {
+  const SpeakButton({Key? key, required this.textNotifier}) : super(key: key);
 
   final ValueNotifier<String> textNotifier;
 
   @override
-  _ListenButtonState createState() => _ListenButtonState();
+  _SpeakButtonState createState() => _SpeakButtonState();
 }
 
-class _ListenButtonState extends State<ListenButton> {
+class _SpeakButtonState extends State<SpeakButton> {
   _ListenState _listenState = _ListenState.initializing;
   late final Stt _stt;
 
@@ -46,6 +46,7 @@ class _ListenButtonState extends State<ListenButton> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTapDown: (event) async {
         print('onTapDown');
         try {
@@ -67,20 +68,11 @@ class _ListenButtonState extends State<ListenButton> {
           _listenState = _ListenState.idle;
         });
       },
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minWidth: 120,
-          minHeight: 30,
-        ),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-              border: Border.all(), borderRadius: BorderRadius.circular(4)),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Text(_buildLabel()),
-            ),
-          ),
+      child: AbsorbPointer(
+        child: OutlinedButton.icon(
+          onPressed: () {},
+          icon: Icon(Icons.mic_none_outlined),
+          label: Text(_buildLabel()),
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:speech_text_speech/state/stt.dart';
-import 'package:speech_to_text/speech_to_text.dart';
 
 class SpeakButton extends StatefulWidget {
   const SpeakButton({Key? key, required this.textNotifier}) : super(key: key);
@@ -54,12 +53,12 @@ class _SpeakButtonState extends State<SpeakButton> {
             print('words: ' + result);
             widget.textNotifier.value = result;
           });
-        } on ListenFailedException catch (e) {
-          widget.textNotifier.value = e.details;
+          setState(() {
+            _listenState = _ListenState.listening;
+          });
+        } on Exception {
+          widget.textNotifier.value = 'Oops! Something Went Wrong...';
         }
-        setState(() {
-          _listenState = _ListenState.listening;
-        });
       },
       onTapUp: (event) {
         print('onTapUp');

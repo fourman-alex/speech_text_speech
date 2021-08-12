@@ -5,6 +5,10 @@ class Stt {
     required this.onStatus,
     required this.onError,
   }) {
+    _init();
+  }
+
+  Future<void> _init() async {
     Future(() async {
       try {
         final res = await _speechToText.initialize(
@@ -65,7 +69,8 @@ class Stt {
 
   Future<void> stop() async {
     if (!_sttDidInit) {
-      throw Exception('Service not initialized');
+      // just do nothing
+      return;
     }
     try {
       await _speechToText.stop();

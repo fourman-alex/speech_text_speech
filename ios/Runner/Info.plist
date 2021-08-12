@@ -45,5 +45,9 @@
     <string>The app uses the microphone to transcribe speech to text.</string>
     <key>NSSpeechRecognitionUsageDescription</key>
     <string>The app uses speech recognition to transcribe speech to text.</string>
+    <key>UIUserInterfaceStyle</key>
+    <string>Dark</string>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <true/>
 </dict>
 </plist>

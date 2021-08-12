@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      themeMode: ThemeMode.dark,
       theme: ThemeData.dark().copyWith(
         outlinedButtonTheme: OutlinedButtonThemeData(
             style: OutlinedButton.styleFrom(minimumSize: const Size(130, 50))),
